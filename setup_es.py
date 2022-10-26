@@ -84,7 +84,7 @@ if __name__ == "__main__":
     collection = {}
 
     # Import and pre-process marco collection
-    macro_collection = load_ms_macro(os.path.normpath('data/MS Macro collection split.tsv'))
+    macro_collection = load_ms_macro(os.path.normpath('data/MS Macro collection.tsv'))
     for index in macro_collection:
         collection[index] = preprocess(macro_collection[index])
 
