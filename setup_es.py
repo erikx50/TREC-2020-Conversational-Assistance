@@ -4,6 +4,7 @@ import re
 import os
 import csv
 import nltk
+from trec_car import read_data
 
 
 nltk.download("stopwords")
@@ -66,16 +67,33 @@ def load_ms_macro(filepath):
     return return_dict
 
 
+def load_trec_car(filepath):
+    return_dict = {}
+    for par in read_data.iter_paragraphs(open(filepath, "rb")):
+        totText = ""
+        for p in par.bodies:
+            totText += p.get_text() # text, can be strung togherther to get full body
+        return_dict["CAR_"+par.para_id] = totText
+    return return_dict
+
+
 if __name__ == "__main__":
-    """Index artists"""
     es = Elasticsearch()
-    es.info()
+
+    # Create main collection
+    collection = {}
 
     # Import and pre-process marco collection
     macro_collection = load_ms_macro(os.path.normpath('data/MS Macro collection split.tsv'))
     for index in macro_collection:
-        macro_collection[index] = preprocess(macro_collection[index])
+        collection[index] = preprocess(macro_collection[index])
 
+    # Import and pre-process wiki collection
+    wiki_collection = load_trec_car(os.path.normpath("data/dedup.articles-paragraphs.cbor"))
+    for index in wiki_collection:
+        collection[index] = preprocess(wiki_collection[index])
+
+    # Push collection to es database
     reset_index(es)
-    bulk_index(es, macro_collection)
-    print(es.get(index=INDEX_NAME, id='MARCO_5499807'))
+    bulk_index(es, collection)
+

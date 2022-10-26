@@ -1,7 +1,6 @@
 import json
 import os
 import nltk
-import cbor2 as cbor
 from elasticsearch import Elasticsearch
 
 nltk.download("stopwords")
@@ -13,10 +12,6 @@ def load_json(filepath):
         return f
 
 
-def load_cbor(filepath):
-    with open(filepath, 'r', encoding='ISO-8859-1') as file:
-        f = cbor.load(file)
-        return f
 
 
 if __name__ == "__main__":
@@ -28,4 +23,4 @@ if __name__ == "__main__":
 
     # Score the whole collection
     es = Elasticsearch()
-    print(es.get(index="collection", id='MARCO_5499807'))
+    print(es.get(index="collection", id='MARCO_5499807')['_source'])
