@@ -29,3 +29,4 @@ if __name__ == "__main__":
         
         #TODO: add to db
         print(totText)
+        print(par.para_id)
