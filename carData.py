@@ -20,6 +20,12 @@ class Cars:
 if __name__ == "__main__":
     cd = Cars() 
     for par in read_data.iter_paragraphs(open("data\paragraphCorpus\dedup.articles-paragraphs.cbor", "rb")):
+        totText = ""
         for p in par.bodies:
-            print(p) # text, can be strung togherther to get full body
+            
+            totText += p.get_text() # text, can be strung togherther to get full body
             # Process this and store in DB
+        #TODO: preprocess
+        
+        #TODO: add to db
+        print(totText)
