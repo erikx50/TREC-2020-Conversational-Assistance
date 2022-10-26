@@ -4,6 +4,8 @@ import numpy as np
 import os
 import csv
 import nltk
+from krovetzstemmer import Stemmer as Kstemmer
+from rank_bm25 import BM25Okapi
 
 nltk.download("stopwords")
 STOPWORDS = set(nltk.corpus.stopwords.words("english"))
@@ -28,12 +30,9 @@ def load_ms_macro(filepath):
 
 
 def preprocess(doc):
-    # Removes all non alpha-numerical characters, performs stopword removal and KStemming
-    return [
-        term
-        for term in re.sub(r"[^\w]|_", " ", doc).lower().split()
-        if term not in STOPWORDS
-    ]
+    # Removes all non alpha-numerical characters, performs stopword removal and K-stemming
+    stemmer = Kstemmer()
+    return [stemmer.stem(term) for term in re.sub('[^0-9a-zA-Z]+', " ", doc).lower().split() if term not in STOPWORDS]
 
 
 if __name__ == "__main__":
@@ -44,5 +43,4 @@ if __name__ == "__main__":
     for index in macro_collection:
         macro_collection[index] = preprocess(macro_collection[index])
     print(macro_collection)
-
     # TODO: Import and pre-process wiki collection
