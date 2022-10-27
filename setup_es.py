@@ -66,14 +66,16 @@ def load_trec_car_to_es(filepath, es):
 
 def main():
     es = Elasticsearch()
-    reset_index(es)
+    # reset_index(es)
 
     # Import, pre-process and add marco collection to es database
-    load_ms_macro_to_es(os.path.normpath('data/MS Macro collection.tsv'), es)
+    # load_ms_macro_to_es(os.path.normpath('data/MS Macro collection.tsv'), es)
 
     # Import and pre-process wiki collection
-    load_trec_car_to_es(os.path.normpath("data/dedup.articles-paragraphs.cbor"), es)
+    # load_trec_car_to_es(os.path.normpath("data/dedup.articles-paragraphs.cbor"), es)
 
 
 if __name__ == "__main__":
-    main()
+    print("Remove comment mark from line under to build database")
+    # main()
+
