@@ -17,7 +17,7 @@ def write_results(path, result):
         for id in result:
             counter = 1
             for doc in result[id]:
-                file.write(str(id) + ' ' + 'Q0' + ' ' + str(doc) + ' ' + str(counter) + ' ' + str(result[id][doc]) + '\n')
+                file.write(str(id) + ' ' + 'Q0' + ' ' + str(doc) + ' ' + str(counter) + ' ' + str(result[id][doc]) + ' ' + 'Manual' + '\n')
                 counter += 1
 
 
@@ -62,5 +62,3 @@ if __name__ == "__main__":
     # Write result to file
     write_results(os.path.normpath('results/manual_results.txt'), result)
 
-    # TODO: Remove code under
-    # print(es.get(index="collection", id='MARCO_570000')['_source'])
