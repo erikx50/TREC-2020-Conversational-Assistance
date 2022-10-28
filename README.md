@@ -1,4 +1,4 @@
-## TREC2020
+# TREC 2020 Conversational Assistance
 
 # Setup
 We use elastisearch version 7.17.6 as a database.
