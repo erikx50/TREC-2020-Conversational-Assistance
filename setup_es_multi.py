@@ -11,10 +11,7 @@ import ray
 
 nltk.download("stopwords")
 STOPWORDS = set(nltk.corpus.stopwords.words("english"))
-
-
 INDEX_NAME = "prosjektdbfull"
-
 INDEX_SETTINGS = {
     "mappings": {
         "properties": {
@@ -31,6 +28,9 @@ INDEX_SETTINGS = {
         }
     }
 }
+
+
+CARBATCHSIZE = 100000
 
 
 def reset_index(es: Elasticsearch):
@@ -121,12 +121,12 @@ def load_trec_car_to_es(filepath, es):
     for par in read_data.iter_paragraphs(open(filepath, "rb")):
         i += 1
         data.append(par)
-        if len(data) >= 100000:
+        if len(data) >= CARBATCHSIZE:
             count += 1
             last = toIndxCar.remote(data)
             blockers.append(last)
             data = []
-        if i % 100000 == 0:
+        if i % CARBATCHSIZE == 0:
             print(f"Diveded {i:,} car Documents")
         
         # There are too many documents, need to split it
