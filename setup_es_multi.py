@@ -49,6 +49,7 @@ def preprocess(doc):
 
 def load_ms_macro_to_es(filepath, es):
     i = 0
+    count = 0
     data: list = []
     blockers: list = []
 
@@ -58,16 +59,25 @@ def load_ms_macro_to_es(filepath, es):
             i += 1
             data.append(line)
             if len(data) >= 500000:
+                count += 1
                 last = toIndxMacro.remote(data)
                 blockers.append(last)
                 data = []
             if i % 500000 == 0:
                 print(f"Diveded {i:,} macro Documents")
+            if count >= os.cpu_count(): # limt paralells to cpu cores
+                # May cause an error if above.
+                print("Waiting for one macro batch")
+                for b in blockers: # Block til done
+                    ray.get(b)
+                blockers = []
+                count = 0
+                print("One macro batch, starting a new")
         if len(data) > 0: # leftover data 
             r = toIndxMacro.remote(data)
             blockers.append(r)
 
-    print(f"Diveded up a total of {i:,} car documents")
+    print(f"Diveded up a total of {i:,} macro documents")
     print("WAITING")
     for b in blockers:
         ray.get(b)
@@ -110,29 +120,30 @@ def load_trec_car_to_es(filepath, es):
 
     for par in read_data.iter_paragraphs(open(filepath, "rb")):
         i += 1
-        
         data.append(par)
-        if len(data) >= 500000:
+        if len(data) >= 100000:
             count += 1
             last = toIndxCar.remote(data)
             blockers.append(last)
             data = []
-        if i % 500000 == 0:
+        if i % 100000 == 0:
             print(f"Diveded {i:,} car Documents")
         
         # There are too many documents, need to split it
         # into numcpus chunks at a time.
         if count >= os.cpu_count():
+            print("Waiting for one car batch")
             for b in blockers: # Block til done
                 ray.get(b)
             blockers = []
             count = 0
+            print("One car batch, starting a new")
     if len(data) > 0: # leftover data 
         r = toIndxCar.remote(data)
         blockers.append(r)
         
     print(f"Diveded up a total of {i:,} car documents")
-    print("WAITING")
+    
 
     print("ALL CAR HAS RETURNED")
     return
