@@ -62,7 +62,7 @@ def load_ms_macro_to_es(filepath, es):
                 blockers.append(last)
                 data = []
             if i % 500000 == 0:
-                print("New500k")
+                print(f"Diveded {i:,} Documents")
         if len(data) > 0: # leftover data 
             r = toIndxMacro.remote(data)
             blockers.append(r)
@@ -75,22 +75,31 @@ def load_ms_macro_to_es(filepath, es):
 
 @ray.remote
 def toIndxMacro(data):
+    i = 0
     es = Elasticsearch()
     for line in data:
+        i += 1
         body = {"id": "MARCO_"+line[0], "data": ' '.join(preprocess(line[1]))}
         es.index(index=INDEX_NAME, doc_type="_doc", id="MARCO_"+line[0], body=body)
+        if i % 100000 == 0:
+            print(f"@{i:,} Documents")
     print("ONE PROCESS DONE")
         
 
 @ray.remote
 def toIndxCar(data):
+    i = 0
     es = Elasticsearch()
     for par in data:
+        i += 1
         totText = ""
         for p in par.bodies:
             totText += p.get_text() # text, can be strung togherther to get full body
         body = {"id": "CAR_"+par.para_id, "data": ' '.join(preprocess(totText))}
         es.index(index=INDEX_NAME, doc_type="_doc", id="CAR_"+par.para_id, body=body)
+        if i % 100000 == 0:
+            print(f"@{i:,} Documents")
+    print("ONE PROCESS DONE")
 
 def load_trec_car_to_es(filepath, es):
     i = 0
@@ -103,9 +112,10 @@ def load_trec_car_to_es(filepath, es):
             last = toIndxCar.remote(data)
             blockers.append(last)
             data = []
-        if len(data) > 0: # leftover data 
-            r = toIndxCar.remote(data)
-            blockers.append(r)
+    if len(data) > 0: # leftover data 
+        r = toIndxCar.remote(data)
+        blockers.append(r)
+        
     
     print("WAITING")
     for b in blockers:
@@ -127,6 +137,6 @@ def main():
 
 
 if __name__ == "__main__":
-    print("Remove comment mark from line under to build database")
+    #print("Remove comment mark from line under to build database")
     main()
 
