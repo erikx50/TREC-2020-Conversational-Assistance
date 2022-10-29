@@ -62,15 +62,16 @@ def load_ms_macro_to_es(filepath, es):
                 blockers.append(last)
                 data = []
             if i % 500000 == 0:
-                print(f"Diveded {i:,} Documents")
+                print(f"Diveded {i:,} macro Documents")
         if len(data) > 0: # leftover data 
             r = toIndxMacro.remote(data)
             blockers.append(r)
 
-        print("WAITING")
-        for b in blockers:
-            ray.get(b)
-        print("ALL MACRO HAS RETURNED")
+    print(f"Diveded up a total of {i:,} car documents")
+    print("WAITING")
+    for b in blockers:
+        ray.get(b)
+    print("ALL MACRO HAS RETURNED")
     return
 
 @ray.remote
@@ -107,16 +108,19 @@ def load_trec_car_to_es(filepath, es):
     blockers: list = []
 
     for par in read_data.iter_paragraphs(open(filepath, "rb")):
+        i += 1
         data.append(par)
         if len(data) >= 500000:
             last = toIndxCar.remote(data)
             blockers.append(last)
             data = []
+        if i % 500000 == 0:
+            print(f"Diveded {i:,} car Documents")
     if len(data) > 0: # leftover data 
         r = toIndxCar.remote(data)
         blockers.append(r)
         
-    
+    print(f"Diveded up a total of {i:,} car documents")
     print("WAITING")
     for b in blockers:
         ray.get(b)
