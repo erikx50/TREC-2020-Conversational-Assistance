@@ -104,11 +104,13 @@ def toIndxCar(data):
 
 def load_trec_car_to_es(filepath, es):
     i = 0
+    count = 0
     data: list = []
     blockers: list = []
 
     for par in read_data.iter_paragraphs(open(filepath, "rb")):
         i += 1
+        count += 1
         data.append(par)
         if len(data) >= 500000:
             last = toIndxCar.remote(data)
@@ -116,14 +118,21 @@ def load_trec_car_to_es(filepath, es):
             data = []
         if i % 500000 == 0:
             print(f"Diveded {i:,} car Documents")
+        
+        # There are too many documents, need to split it
+        # into numcpus chunks at a time.
+        if count >= os.cpu_count:
+            for b in blockers: # Block til done
+                ray.get(b)
+            blockers = []
+            count = 0
     if len(data) > 0: # leftover data 
         r = toIndxCar.remote(data)
         blockers.append(r)
         
     print(f"Diveded up a total of {i:,} car documents")
     print("WAITING")
-    for b in blockers:
-        ray.get(b)
+
     print("ALL CAR HAS RETURNED")
     return
 
@@ -134,7 +143,7 @@ def main():
     reset_index(es)
 
     # Import, pre-process and add marco collection to es database
-    load_ms_macro_to_es(os.path.normpath('data/MS Macro collection.tsv'), es)
+    #load_ms_macro_to_es(os.path.normpath('data/MS Macro collection.tsv'), es)
 
     # Import and pre-process wiki collection
     load_trec_car_to_es(os.path.normpath("data/dedup.articles-paragraphs.cbor"), es)
