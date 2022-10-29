@@ -110,9 +110,10 @@ def load_trec_car_to_es(filepath, es):
 
     for par in read_data.iter_paragraphs(open(filepath, "rb")):
         i += 1
-        count += 1
+        
         data.append(par)
         if len(data) >= 500000:
+            count += 1
             last = toIndxCar.remote(data)
             blockers.append(last)
             data = []
