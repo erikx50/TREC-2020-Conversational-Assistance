@@ -13,7 +13,7 @@ nltk.download("stopwords")
 STOPWORDS = set(nltk.corpus.stopwords.words("english"))
 
 
-INDEX_NAME = "collection"
+INDEX_NAME = "prosjektdbfull"
 
 INDEX_SETTINGS = {
     "mappings": {
@@ -121,7 +121,7 @@ def load_trec_car_to_es(filepath, es):
         
         # There are too many documents, need to split it
         # into numcpus chunks at a time.
-        if count >= os.cpu_count:
+        if count >= os.cpu_count():
             for b in blockers: # Block til done
                 ray.get(b)
             blockers = []
