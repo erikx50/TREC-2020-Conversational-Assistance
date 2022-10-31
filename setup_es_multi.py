@@ -74,13 +74,13 @@ def load_ms_macro_to_es(filepath, es):
                 count = 0
                 print("One macro batch, starting a new")
         if len(data) > 0: # leftover data 
+            print(f"Waiting for last batch. Total to be {i:,} documents")
             r = toIndxMacro.remote(data)
             blockers.append(r)
 
-    print(f"Diveded up a total of {i:,} macro documents")
-    print("WAITING")
     for b in blockers:
-        ray.get(b)
+        ray.get(b) # If any leftover has to be fully processed
+    print(f"Diveded up a total of {i:,} macro documents")
     print("ALL MACRO HAS RETURNED")
     return
 
@@ -91,7 +91,7 @@ def toIndxMacro(data):
     for line in data:
         i += 1
         body = {"id": "MARCO_"+line[0], "data": ' '.join(preprocess(line[1]))}
-        es.index(index=INDEX_NAME, doc_type="_doc", id="MARCO_"+line[0], body=body)
+        es.index(index=INDEX_NAME, doc_type="_doc", id="MARCO_"+line[0], body=body, request_timeout=60)
         if i % 100000 == 0:
             print(f"@{i:,} Documents")
     print("ONE PROCESS DONE")
@@ -99,6 +99,7 @@ def toIndxMacro(data):
 
 @ray.remote
 def toIndxCar(data):
+    print("New car process started")
     i = 0
     es = Elasticsearch()
     for par in data:
@@ -107,10 +108,12 @@ def toIndxCar(data):
         for p in par.bodies:
             totText += p.get_text() # text, can be strung togherther to get full body
         body = {"id": "CAR_"+par.para_id, "data": ' '.join(preprocess(totText))}
-        es.index(index=INDEX_NAME, doc_type="_doc", id="CAR_"+par.para_id, body=body)
+        es.index(index=INDEX_NAME, doc_type="_doc", id="CAR_"+par.para_id, body=body, request_timeout=120)
         if i % 100000 == 0:
             print(f"@{i:,} Documents")
+    es.close()
     print("ONE PROCESS DONE")
+
 
 def load_trec_car_to_es(filepath, es):
     i = 0
@@ -139,23 +142,24 @@ def load_trec_car_to_es(filepath, es):
             count = 0
             print("One car batch, starting a new")
     if len(data) > 0: # leftover data 
+        print(f"Waiting for last batch. Total to be {i:,} documents")
         r = toIndxCar.remote(data)
         blockers.append(r)
-        
-    print(f"Diveded up a total of {i:,} car documents")
     
-
+    for b in blockers:
+        ray.get(b) # If any leftover has to be fully processed
+    print(f"Diveded up a total of {i:,} car documents")
     print("ALL CAR HAS RETURNED")
     return
 
 
 def main():
-    ray.init(num_gpus=0)
+    ray.init(num_gpus=0, num_cpus=os.cpu_count())
     es = Elasticsearch()
     reset_index(es)
 
     # Import, pre-process and add marco collection to es database
-    #load_ms_macro_to_es(os.path.normpath('data/MS Macro collection.tsv'), es)
+    load_ms_macro_to_es(os.path.normpath('data/MS Macro collection.tsv'), es)
 
     # Import and pre-process wiki collection
     load_trec_car_to_es(os.path.normpath("data/dedup.articles-paragraphs.cbor"), es)
