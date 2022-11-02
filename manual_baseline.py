@@ -3,7 +3,7 @@ import os
 from setup_es import preprocess
 from elasticsearch import Elasticsearch
 
-INDEX_NAME = "collection"
+INDEX_NAME = "prosjektdbfull"
 
 
 def load_json(filepath):
