@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb110cc0-f8e1-4778-86aa-a8a0ea920e13" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/results/manual_results.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual_baseline.py" beforeDir="false" afterPath="$PROJECT_DIR$/manual_baseline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bert_reranker.py" beforeDir="false" afterPath="$PROJECT_DIR$/bert_reranker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bm25baseline.py" beforeDir="false" afterPath="$PROJECT_DIR$/bm25baseline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/score.py" beforeDir="false" afterPath="$PROJECT_DIR$/score.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup_es.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup_es.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup_es_multi.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup_es_multi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,25 +20,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/manual_baseline.py">
+        <entry file="file://$PROJECT_DIR$/bert_reranker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="19" column="90" selection-start-line="19" selection-start-column="90" selection-end-line="19" selection-end-column="90" />
+            <state relative-caret-position="102">
+              <caret line="6" column="36" lean-forward="true" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#0#46#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/setup_es.py">
+        <entry file="file://$PROJECT_DIR$/2020/baselines/y2_manual_results_500.v1.0.run">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="58" column="20" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="34">
+              <caret line="2" column="21" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -49,17 +51,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>MARCO_5498474</find>
-      <find>MARCO_7016261</find>
-      <find>MARCO_8288636</find>
-      <find>_1</find>
-      <find>801480</find>
-      <find>MARCO_1104225</find>
-      <find>1381086</find>
-      <find>marco_4</find>
-      <find>marco_5</find>
-      <find>5498517</find>
-      <find>5498469</find>
       <find>5498961|</find>
       <find>5498936</find>
       <find>5498472</find>
@@ -71,6 +62,25 @@
       <find>297564</find>
       <find>368551</find>
       <find>MARCO_368551</find>
+      <find>700026</find>
+      <find>454605</find>
+      <find>MARCO_1619653</find>
+      <find>MARCO_1900272</find>
+      <find>MARCO_3588972</find>
+      <find>read_data</find>
+      <find>MARCO_6154878</find>
+      <find>MARCO_4516819</find>
+      <find>MARCO_7308614</find>
+      <find>MARCO_6024406</find>
+      <find>MARCO_4516817</find>
+      <find>MARCO_7308619</find>
+      <find>MARCO_700026</find>
+      <find>MARCO_6154874</find>
+      <find>MARCO_5186587</find>
+      <find>MARCO_5498474</find>
+      <find>MARCO_1104225</find>
+      <find>MARCO_8581568</find>
+      <find>MARCO_1900270</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -80,15 +90,25 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/2020/2020_manual_evaluation_topics_v1.0.json" />
-        <option value="$PROJECT_DIR$/2020/baselines/y2_manual_results_500.v1.0.run" />
         <option value="$PROJECT_DIR$/carData.py" />
         <option value="$PROJECT_DIR$/utils.py" />
-        <option value="$PROJECT_DIR$/setup_es.py" />
+        <option value="$PROJECT_DIR$/../evaluate.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/manual_baseline.py" />
+        <option value="$PROJECT_DIR$/evaluate.py" />
+        <option value="$PROJECT_DIR$/2020/baselines/y2_manual_results_500.v1.0.run" />
+        <option value="$PROJECT_DIR$/score.py" />
+        <option value="$PROJECT_DIR$/data/dummy_MS Macro collection.tsv'" />
+        <option value="$PROJECT_DIR$/data/dummy_dedup.articles-paragraphs.cbor" />
+        <option value="$PROJECT_DIR$/setup_es_multi.py" />
+        <option value="$PROJECT_DIR$/setup_es.py" />
+        <option value="$PROJECT_DIR$/bm25baseline.py" />
+        <option value="$PROJECT_DIR$/bert_reranker.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-12" />
     <option name="y" value="132" />
     <option name="width" value="2277" />
@@ -99,7 +119,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -115,27 +134,17 @@
             <path>
               <item name="DAT640-Project-007" type="b2602c69:ProjectViewProjectNode" />
               <item name="DAT640-Project-007" type="462c0819:PsiDirectoryNode" />
-              <item name="2020" type="462c0819:PsiDirectoryNode" />
-              <item name="baselines" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DAT640-Project-007" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DAT640-Project-007" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DAT640-Project-007" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DAT640-Project-007" type="462c0819:PsiDirectoryNode" />
               <item name="results" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Master/Autumn 2022/DAT640 - Information retrieval and text mining" />
+    <property name="last_opened_file_path" value="C:/Documents and Settings" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -155,8 +164,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.manual_baseline">
-    <configuration name="manual_baseline" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.bert_reranker">
+    <configuration name="bert_reranker" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DAT640-Project-007" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -168,7 +177,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manual_baseline.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bert_reranker.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -177,7 +186,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="setup_es" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="bm25baseline" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DAT640-Project-007" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -189,7 +198,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/setup_es.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bm25baseline.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -198,7 +207,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="utils" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="evaluate" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DAT640-Project-007" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -210,7 +219,49 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\erikf\Desktop\DAT640-Project-007\score.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="score" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DAT640-Project-007" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/score.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DAT640-Project-007" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -221,9 +272,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.manual_baseline" />
-        <item itemvalue="Python.utils" />
-        <item itemvalue="Python.setup_es" />
+        <item itemvalue="Python.bert_reranker" />
+        <item itemvalue="Python.score" />
+        <item itemvalue="Python.evaluate" />
+        <item itemvalue="Python.bm25baseline" />
+        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -234,16 +287,16 @@
     <frame x="-7" y="-7" width="1519" height="977" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24966262" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966262" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3298969" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3298969" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.29438716" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3298969" />
       <window_info anchor="bottom" id="Educational.CheckDetails" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3298969" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3298969" />
@@ -253,12 +306,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2020/2020_automatic_evaluation_topics_v1.0.proto">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2020/baselines/y2_manual_sdm">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/2020/baselines/y2_raw_results_500.v1.0.run">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -268,16 +315,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2020/automatic_evaluation_topics_annotated_v1.1.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Master/Autumn 2022/DAT640 - Information retrieval and text mining/Assignments/Assignment A3.3 - Learning to Rank/A3_3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="215" column="35" selection-start-line="215" selection-start-column="19" selection-end-line="215" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../Master/Autumn 2022/DAT640 - Information retrieval and text mining/Assignments/Assignment A2.1 - Indexing/A2_1.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -289,151 +326,190 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data/paragraphCorpus/LICENSE" />
+    <entry file="file://$PROJECT_DIR$/data/paragraphCorpus/README.mkd" />
+    <entry file="file://$PROJECT_DIR$/data/paragraphCorpus/dedup.articles-paragraphs.cbor" />
+    <entry file="file://$PROJECT_DIR$/../Master/Autumn 2022/DAT640 - Information retrieval and text mining/Assignments/Assignment A1.3 - Training and evaluating a spam classifier/venv/Lib/site-packages/cbor2/decoder.py" />
+    <entry file="file://$PROJECT_DIR$/data/MS Macro collection split.tsv" />
+    <entry file="file://$PROJECT_DIR$/carData.py" />
+    <entry file="file://$PROJECT_DIR$/data/MS Macro collection.tsv" />
+    <entry file="file://$PROJECT_DIR$/utils.py" />
+    <entry file="file://$PROJECT_DIR$/../evaluate.py" />
     <entry file="file://$PROJECT_DIR$/../Master/Autumn 2022/DAT640 - Information retrieval and text mining/Assignments/Assignment A3.2 - Entity ranking/A3_2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="239" selection-start-line="239" selection-end-line="258" selection-end-column="25" />
+        <state relative-caret-position="-395">
+          <caret line="428" column="31" lean-forward="true" selection-start-line="428" selection-start-column="31" selection-end-line="428" selection-end-column="31" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
+    <entry file="file://$PROJECT_DIR$/../Master/Autumn 2022/DAT640 - Information retrieval and text mining/Assignments/Assignment A3.3 - Learning to Rank/A3_3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/paragraphCorpus/LICENSE">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-576">
-          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/paragraphCorpus/README.mkd">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="55" lean-forward="true" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/paragraphCorpus/dedup.articles-paragraphs.cbor">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="102">
-          <caret column="895" selection-start-column="895" selection-end-column="895" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Master/Autumn 2022/DAT640 - Information retrieval and text mining/Assignments/Assignment A1.3 - Training and evaluating a spam classifier/venv/Lib/site-packages/cbor2/decoder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="679" selection-start-line="679" selection-end-line="679" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/MS Macro collection split.tsv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="4452">
-          <caret line="1341" column="7" selection-start-line="1341" selection-end-line="1341" selection-end-column="7" />
-        </state>
-      </provider>
-      <provider editor-type-id="LargeFileEditor">
-        <state relative-caret-position="122">
-          <caret line="9" column="70" lean-forward="true" selection-start-line="9" selection-start-column="70" selection-end-line="9" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/carData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="14" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/MS Macro collection.tsv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="-67148">
-          <caret column="57" lean-forward="true" selection-start-column="57" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2020/2020_manual_evaluation_topics_v1.0.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="62" lean-forward="true" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="3502">
+          <caret line="215" column="35" selection-start-line="215" selection-start-column="19" selection-end-line="215" selection-end-column="35" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2020/baselines/y2_manual_results_500.v1.0.run">
+    <entry file="file://$PROJECT_DIR$/2020/baselines/y2_manual_sdm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="294" column="20" selection-start-line="294" selection-start-column="8" selection-end-line="294" selection-end-column="20" />
+        <state relative-caret-position="68">
+          <caret line="4" column="43" lean-forward="true" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2020/2020_automatic_evaluation_topics_v1.0.json">
+    <entry file="file://$PROJECT_DIR$/2020/automatic_evaluation_topics_annotated_v1.1.proto">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+        <state relative-caret-position="51">
+          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup_es.py">
+    <entry file="file://$PROJECT_DIR$/2020/2020_automatic_evaluation_topics_v1.0.proto">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results/manual_results.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="58" column="20" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="1" column="40" selection-start-line="1" selection-start-column="40" selection-end-line="1" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results/bm25_automatic_results.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-867" />
+      </provider>
+    </entry>
+    <entry file="file://C:/pythoninter/Lib/site-packages/datasets/filesystems/hffilesystem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/2020/baselines/y2_automatic_results_500.v1.0.run">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50830">
-          <caret line="2990" column="60" selection-start-line="2990" selection-start-column="60" selection-end-line="2990" selection-end-column="60" />
+        <state>
+          <caret column="21" selection-start-column="8" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2020/2020_manual_evaluation_topics_v1.0.proto">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2020/2020_manual_evaluation_topics_v1.0.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="97" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/2020/2020qrels.txt">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2020/baselines/y2_manual_results_500.v1.0.run">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results/bm25_manual_results.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="82" column="21" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2020/2020_automatic_evaluation_topics_v1.0.json">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="20" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="20" />
+          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/results/manual_results.txt">
+    <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="15" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
+        <state relative-caret-position="68">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manual_baseline.py">
+    <entry file="file://$PROJECT_DIR$/results/BERT_manual_results.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="19" column="90" selection-start-line="19" selection-start-column="90" selection-end-line="19" selection-end-column="90" />
+        <state relative-caret-position="208">
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/dummy_MS Macro collection.tsv'">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/dummy_dedup.articles-paragraphs.cbor">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup_es_multi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="35" column="36" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="36" />
+          <folding>
+            <element signature="e#1#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/score.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup_es.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bm25baseline.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="101" selection-start-line="101" selection-end-line="108" selection-end-column="7" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bert_reranker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="36" lean-forward="true" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
           </folding>
         </state>
       </provider>
