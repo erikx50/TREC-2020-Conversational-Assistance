@@ -11,7 +11,7 @@ nltk.download("stopwords")
 STOPWORDS = set(nltk.corpus.stopwords.words("english"))
 
 
-INDEX_NAME = "collection"
+INDEX_NAME = "prosjektdbfull"
 
 INDEX_SETTINGS = {
     "mappings": {
@@ -69,10 +69,10 @@ def main():
     # reset_index(es)
 
     # Import, pre-process and add marco collection to es database
-    # load_ms_macro_to_es(os.path.normpath('data/MS Macro collection.tsv'), es)
+    load_ms_macro_to_es(os.path.normpath('data/MS Macro collection.tsv'), es)
 
     # Import and pre-process wiki collection
-    # load_trec_car_to_es(os.path.normpath("data/dedup.articles-paragraphs.cbor"), es)
+    load_trec_car_to_es(os.path.normpath("data/dedup.articles-paragraphs.cbor"), es)
 
 
 if __name__ == "__main__":
