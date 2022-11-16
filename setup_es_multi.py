@@ -1,6 +1,6 @@
-from xmlrpc.server import list_public_methods
 from elasticsearch import Elasticsearch
 from krovetzstemmer import Stemmer as Kstemmer
+from setup_es import reset_index, preprocess
 import re
 import os
 import csv
@@ -31,20 +31,6 @@ INDEX_SETTINGS = {
 
 
 CARBATCHSIZE = 100000
-
-
-def reset_index(es: Elasticsearch):
-    """Reset Index"""
-    if es.indices.exists(INDEX_NAME):
-        es.indices.delete(index=INDEX_NAME)
-
-    es.indices.create(index=INDEX_NAME, body=INDEX_SETTINGS)
-
-
-def preprocess(doc):
-    # Removes all non alpha-numerical characters, performs stopword removal and K-stemming
-    stemmer = Kstemmer()
-    return [stemmer.stem(term) for term in re.sub('[^0-9a-zA-Z]+', " ", doc).lower().split() if term not in STOPWORDS]
 
 
 def load_ms_macro_to_es(filepath, es):

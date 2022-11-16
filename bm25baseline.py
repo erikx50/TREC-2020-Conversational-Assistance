@@ -36,7 +36,7 @@ def write_results(file_path: str, result: Dict[str, Dict[str, float]], utterance
                 counter += 1
 
 
-def baseline_retrieval(es, index_name: str, query: List[str], k: int) -> Dict[str, float]:
+def baseline_retrieval(es: Elasticsearch, index_name: str, query: List[str], k: int) -> Dict[str, float]:
     """
     Performs BM25 baseline retrieval on index.
     Args:
@@ -68,7 +68,21 @@ def baseline_retrieval(es, index_name: str, query: List[str], k: int) -> Dict[st
     return return_dict
 
 
-def run_baseline_retrieval(es, utterance_type: str, json_file: json, index_name: str, k: int) -> Union[Dict[str, Dict[str, float]], None]:
+def run_baseline_retrieval(es: Elasticsearch, utterance_type: str, json_file: json, index_name: str, k: int) -> Union[Dict[str, Dict[str, float]], None]:
+    """
+    Performs BM25 baseline retrieval on all queries in evaluation_topics json file.
+    Args:
+        es: elasticsearch client
+        utterance_type: Manual or Automatic depending on what utterances we want to use
+        json_file: JSON file containing evaluation_topics.
+        index_name: The elastic search index where the retrieval is performed.
+        k: Number of documents to return.
+
+    Returns:
+        A dictionary containing the topic-number_turn-number as key and a dictionary where
+        the ID of the document is the key and the score of the document is the value as value.
+    """
+
     if utterance_type == 'Manual':
         utterance = 'manual_rewritten_utterance'
     elif utterance_type == 'Automatic':
@@ -84,7 +98,15 @@ def run_baseline_retrieval(es, utterance_type: str, json_file: json, index_name:
     return result_dict
 
 
-def main(es, utterance_type: str, source_path: str, write_path: str) -> None:
+def main(es: Elasticsearch, utterance_type: str, source_path: str, write_path: str) -> None:
+    """
+    Loads data, performs baseline retrieval and writes to file.
+    Args:
+        es: elasticsearch client
+        utterance_type: Manual or Automatic depending on what utterances we want to use
+        source_path: The path of the evaluation_topics json file.
+        write_path: Where to write the result txt file
+    """
     # Load JSON file
     data = load_json(os.path.normpath(source_path))
 
