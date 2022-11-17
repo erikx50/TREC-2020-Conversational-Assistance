@@ -98,6 +98,6 @@ if __name__ == "__main__":
     mode = input("Do you want to run manual (m) or automatic (a): ")
 
     if mode.lower() == "m" or mode.lower() == "manual":
-        main('Manual', '2020/2020_manual_evaluation_topics_v1.0.json', 'results/BERT_manual_results.txt')
+        main('Manual', '2020/2020_manual_evaluation_topics_v1.0.json', 'results/T5_manual_results.txt')
     elif mode.lower() == "a" or mode.lower() == "automatic":
         main('Automatic', '2020/2020_automatic_evaluation_topics_v1.0.json', 'results/T5_automatic_results.txt')
