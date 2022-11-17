@@ -7,7 +7,7 @@ from elasticsearch import Elasticsearch
 from bm25baseline import baseline_retrieval, load_json
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 from scipy.special import softmax
-
+from typing import Dict, List, Union
 
 #Model: https://huggingface.co/castorini/monot5-base-msmarco
 
@@ -17,7 +17,7 @@ tokenizer = T5Tokenizer.from_pretrained("castorini/monot5-base-msmarco")
 
 
 
-def calcScore(es, docID, queryString):
+def calcScore(es: Elasticsearch, docID: str, queryString: str) -> float:
     d = es.get(index=INDEX_NAME, id=docID)
     doc = tokenizer(d['_source']['data'], return_tensors='pt')
     query = tokenizer(queryString, return_tensors="pt")
@@ -33,7 +33,7 @@ def calcScore(es, docID, queryString):
     return score
 
 
-def reranker(es, utterance_type: str, json_path: str, index_name: str, k: int):
+def reranker(es: Elasticsearch, utterance_type: str, json_path: str, index_name: str, k: int) -> Union[Dict[str, List[str]], None]:
     """
         Args:
         es: elasticsearch client
@@ -75,7 +75,7 @@ def reranker(es, utterance_type: str, json_path: str, index_name: str, k: int):
 
 
 
-def saveToFile(result_dict, filepath="results/T5_manual_results.txt"):
+def saveToFile(result_dict: Dict[str, Dict[str, float]], filepath: str = "results/T5_manual_results.txt") -> None:
     with open(filepath, "w") as file:
         for id in result_dict:
             counter = 1
@@ -85,7 +85,7 @@ def saveToFile(result_dict, filepath="results/T5_manual_results.txt"):
 
 
 
-def main(utterance_type: str, source_path: str, write_path: str):
+def main(utterance_type: str, source_path: str, write_path: str) -> None:
     es = Elasticsearch(timeout=120)
 
     dcCount = input("How many documents per query: ")
