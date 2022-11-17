@@ -1,4 +1,4 @@
-from sentence_transformers import CrossEncoder
+from sentence_transformers import CrossEncoder, SentenceTransformer, util
 from bm25baseline import baseline_retrieval, load_json
 from setup_es import preprocess
 from elasticsearch import Elasticsearch
@@ -6,10 +6,11 @@ import os
 from tqdm import tqdm
 from typing import Dict, List, Union
 
+
 INDEX_NAME = "prosjektdbfull"
 
 
-def write_bert_results(file_path: str, result: Dict[str, Dict[str, float]], utterance_type: str):
+def write_bert_results(file_path: str, result: Dict[str, List[str]], utterance_type: str):
     """
     Writes a txt file in TREC format.
     Args:
@@ -51,17 +52,18 @@ def bert_re_ranker(es: Elasticsearch, utterance_type: str, json_path: str, index
 
     result_dict = {}
     for topic in tqdm(data):
-        for turn in topic['turn']:
+        for turn in tqdm(topic['turn']):
             query = preprocess(turn[utterance])
-            docs = [doc for doc in baseline_retrieval(es, index_name, query, k)]
-            query_passage_pairs = [[' '.join(query), es.get(index=INDEX_NAME, id=doc_id)["_source"]["data"]] for doc_id in docs]
+            docs = [doc for doc in baseline_retrieval(es, index_name, query, k*5)]
+
+            query_passage_pairs = [[" ".join(query), es.get(index=INDEX_NAME, id=doc_id)["_source"]["data"]] for doc_id in docs]
             scores = model.predict(query_passage_pairs)
 
             turn_results = {}
             for index in range(len(scores)):
                 turn_results[docs[index]] = scores[index]
             turn_results = sorted(turn_results.items(), key=lambda x: x[1], reverse=True)
-            result_dict[str(topic['number']) + '_' + str(turn['number'])] = turn_results
+            result_dict[str(topic['number']) + '_' + str(turn['number'])] = turn_results[0:500]
     return result_dict
 
 
@@ -75,7 +77,7 @@ def main(es: Elasticsearch, utterance_type: str, source_path: str, write_path: s
         write_path: Where to write the result txt file
     """
     # Get BERT results
-    result = bert_re_ranker(es, utterance_type, source_path, INDEX_NAME, 5)
+    result = bert_re_ranker(es, utterance_type, source_path, INDEX_NAME, 500)
 
     # Write to file
     write_bert_results(write_path, result, utterance_type)
@@ -86,10 +88,10 @@ if __name__ == "__main__":
     es = Elasticsearch(timeout=120)
 
     # Run BERT re-ranking on manual evaluation topics
-    main(es, 'Manual', '2020/2020_manual_evaluation_topics_v1.0.json', 'results/BERT_manual_results.txt')
+    #main(es, 'Manual', '2020/2020_manual_evaluation_topics_v1.0.json', 'results/BERT_manual_results.txt')
 
     # Run BERT re-ranking on automatic evaluation topics
-    #main(es, 'Automatic', '2020/2020_automatic_evaluation_topics_v1.0.json', 'results/BERT_automatic_results.txt')
+    main(es, 'Automatic', '2020/2020_automatic_evaluation_topics_v1.0.json', 'results/BERT_automatic_results.txt')
 
 
 
