@@ -46,6 +46,7 @@ def calcScore(es: Elasticsearch, docID: str, queryString: str) -> float:
 
 def reranker(es: Elasticsearch, utterance_type: str, json_path: str, index_name: str, k: int) -> Union[Dict[str, List[str]], None]:
     """
+    Performs bm25 baseline retrieval before re-ranking the result using T5.
         Args:
         es: elasticsearch client
         utterance_type: Manual or Automatic depending on what utterances we want to use
