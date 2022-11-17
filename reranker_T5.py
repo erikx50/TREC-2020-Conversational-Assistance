@@ -18,6 +18,17 @@ tokenizer = T5Tokenizer.from_pretrained("castorini/monot5-base-msmarco")
 
 
 def calcScore(es: Elasticsearch, docID: str, queryString: str) -> float:
+    """
+    Scores the query on given document using T5 with model and tokenizer from 
+    https://huggingface.co/castorini/monot5-base-msmarco
+
+    Args:
+        es: elasticsearch client
+        docID: Id of document to be scored against
+        queryString: raw query string to score document against
+    Returns:
+        score: float number representing the documents score
+    """
     d = es.get(index=INDEX_NAME, id=docID)
     doc = tokenizer(d['_source']['data'], return_tensors='pt')
     query = tokenizer(queryString, return_tensors="pt")
@@ -40,7 +51,7 @@ def reranker(es: Elasticsearch, utterance_type: str, json_path: str, index_name:
         utterance_type: Manual or Automatic depending on what utterances we want to use
         json_path: Path to the json evaluation_topics file
         index_name: The elastic search index where the retrieval is performed.
-        k: Number of documents to return.
+        k: Number of returned elastisearch documents to score each query on.
 
     Returns:
         A dictionary containing the topic-number_turn-number as key and a list containing document score pairs as value.
@@ -75,7 +86,14 @@ def reranker(es: Elasticsearch, utterance_type: str, json_path: str, index_name:
 
 
 
-def saveToFile(result_dict: Dict[str, Dict[str, float]], filepath: str = "results/T5_manual_results.txt") -> None:
+def saveToFile(result_dict: Dict[str, Dict[str, float]], filepath: str) -> None:
+    """
+    Writes a txt file in TREC format.
+    Args:
+        file_path: The path of where to write the file..
+        result: Dictionary containing the topic+turn as key and dictionary of top k documents and their score as value
+        utterance_type: Manual or Automatic depending on what utterances we want to use
+    """
     with open(filepath, "w") as file:
         for id in result_dict:
             counter = 1
@@ -86,6 +104,14 @@ def saveToFile(result_dict: Dict[str, Dict[str, float]], filepath: str = "result
 
 
 def main(utterance_type: str, source_path: str, write_path: str) -> None:
+    """
+    Performs T5 re-ranking and writes the result to a corresponding file.
+    Args:
+        es: elasticsearch client
+        utterance_type: Manual or Automatic depending on what utterances we want to use
+        source_path: The path of the evaluation_topics json file.
+        write_path: Where to write the result txt file
+    """
     es = Elasticsearch(timeout=120)
 
     dcCount = input("How many documents per query: ")
