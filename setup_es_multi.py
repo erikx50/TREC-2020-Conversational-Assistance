@@ -33,7 +33,14 @@ INDEX_SETTINGS = {
 CARBATCHSIZE = 100000
 
 
-def load_ms_macro_to_es(filepath, es):
+def load_ms_macro_to_es(filepath: str, es: Elasticsearch) -> None:
+    """
+    Loads the macro collection at filepath into the elastisearch connection on the es client.
+    It will divide the workload over the amount of CPUs available in chunks of 500k documents.
+    Args:
+        filepath: path to tsv file containing macro collection
+        es: elasticsearch client
+    """
     i = 0
     count = 0
     data: list = []
@@ -71,7 +78,12 @@ def load_ms_macro_to_es(filepath, es):
     return
 
 @ray.remote
-def toIndxMacro(data):
+def toIndxMacro(data: list) -> None:
+    """
+    Preprocesses the documents and index them to local elastisearch instance.
+    Args:
+        data: List of raw lines from tsv file of macro collection
+    """
     i = 0
     es = Elasticsearch()
     for line in data:
@@ -84,7 +96,12 @@ def toIndxMacro(data):
         
 
 @ray.remote
-def toIndxCar(data):
+def toIndxCar(data: list):
+    """
+    Preprocesses the documents and index them to local elastisearch instance.
+    Args:
+        data: List of line entries from trec car collection (wiki)
+    """
     print("New car process started")
     i = 0
     es = Elasticsearch()
@@ -101,7 +118,15 @@ def toIndxCar(data):
     print("ONE PROCESS DONE")
 
 
-def load_trec_car_to_es(filepath, es):
+def load_trec_car_to_es(filepath: str, es:Elasticsearch) -> None:
+    """
+    Loads the trec car collection at filepath into the elastisearch connection on the es client.
+    It will divide the workload over the amount of CPUs available in chunks of global
+    variable CARBATCHSIZE due to memory limits.
+    Args:
+        filepath: path to cbor file containing trec car (wiki) collection
+        es: elasticsearch client
+    """
     i = 0
     count = 0
     data: list = []
@@ -139,7 +164,11 @@ def load_trec_car_to_es(filepath, es):
     return
 
 
-def main():
+def main() -> None:
+    """
+    Will pre-process and add Macro collection and wiki collection to
+    local running Elastisearch instance at index of global variable: INDEX_NAME
+    """
     ray.init(num_gpus=0, num_cpus=os.cpu_count())
     es = Elasticsearch()
     reset_index(es)
