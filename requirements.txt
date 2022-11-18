@@ -1,5 +1,8 @@
 elasticsearch==7.17.6
 ir_measures==0.3.1
-krovetzstemmer==0.8
+KrovetzStemmer==0.8
 nltk==3.7
+ray==2.1.0
+sentence_transformers==2.0.0
+tqdm==4.49.0
 trec_car_tools==2.6

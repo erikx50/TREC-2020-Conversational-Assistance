@@ -13,6 +13,7 @@ and
 
 TREC CAR paragraph collection v2.0 [(Direct download)](http://trec-car.cs.unh.edu/datareleases/v2.0/paragraphCorpus.v2.0.tar.xz)
 
+Extract these files and place them in the data folder in place of the dummy files.
 
 Be sure to install the python requirements.
 ```
