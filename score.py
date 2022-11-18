@@ -90,19 +90,28 @@ if __name__ == "__main__":
     print("BM25 manual evaluation topics")
     evaluate(os.path.normpath('results/bm25_manual_results.txt'), os.path.normpath('2020/2020qrels.txt'))
 
+    print("BERT re-ranker manual evaluation topics")
+    evaluate(os.path.normpath('results/BERT_reranker_manual_results.txt'), os.path.normpath('2020/2020qrels.txt'))
+
+    print("BERT re-ranker manual evaluation topics by turn depth")
+    evaluate_by_turn_depth(os.path.normpath('results/BERT_reranker_manual_results.txt'), os.path.normpath('2020/2020qrels.txt'))
+
     print("BERT ranker manual evaluation topics")
     evaluate(os.path.normpath('results/BERT_manual_results.txt'), os.path.normpath('2020/2020qrels.txt'))
 
     print("BERT ranker manual evaluation topics by turn depth")
     evaluate_by_turn_depth(os.path.normpath('results/BERT_manual_results.txt'), os.path.normpath('2020/2020qrels.txt'))
 
-    #print("BERT re-ranker manual evaluation topics by topic")
-    #evaluate_by_topic(os.path.normpath('results/BERT_manual_results.txt'), os.path.normpath('2020/2020qrels.txt'))
-
     print("\n")
     print('Automatic Evaluation Topics')
     print("BM25 automatic evaluation topics")
     evaluate(os.path.normpath('results/bm25_automatic_results.txt'), os.path.normpath('2020/2020qrels.txt'))
+
+    print("BERT re-ranker automatic evaluation topics")
+    evaluate(os.path.normpath('results/BERT_reranker_automatic_results.txt'), os.path.normpath('2020/2020qrels.txt'))
+
+    print("BERT re-ranker automatic evaluation topics by turn depth")
+    evaluate_by_turn_depth(os.path.normpath('results/BERT_reranker_automatic_results.txt'), os.path.normpath('2020/2020qrels.txt'))
 
     print("BERT ranker automatic evaluation topics")
     evaluate(os.path.normpath('results/BERT_automatic_results.txt'), os.path.normpath('2020/2020qrels.txt'))
@@ -110,5 +119,4 @@ if __name__ == "__main__":
     print("BERT ranker automatic evaluation topics by turn depth")
     evaluate_by_turn_depth(os.path.normpath('results/BERT_automatic_results.txt'), os.path.normpath('2020/2020qrels.txt'))
 
-    #print("BERT ranker automatic evaluation topics by topic")
-    #evaluate_by_topic(os.path.normpath('results/BERT_automatic_results.txt'), os.path.normpath('2020/2020qrels.txt'))
+
