@@ -102,6 +102,9 @@ if __name__ == "__main__":
     print("BERT ranker manual evaluation topics by turn depth")
     evaluate_by_turn_depth(os.path.normpath('results/BERT_manual_results.txt'), os.path.normpath('2020/2020qrels.txt'))
 
+    print("T5 ranker manual evaluation topics by turn depth")
+    evaluate_by_turn_depth(os.path.normpath('results/T5_manual_results.txt'), os.path.normpath('2020/2020qrels.txt'))
+
     print("\n")
     print('Automatic Evaluation Topics')
     print("BM25 automatic evaluation topics")
@@ -119,4 +122,6 @@ if __name__ == "__main__":
     print("BERT ranker automatic evaluation topics by turn depth")
     evaluate_by_turn_depth(os.path.normpath('results/BERT_automatic_results.txt'), os.path.normpath('2020/2020qrels.txt'))
 
+    print("T5 ranker automatic evaluation topics by turn depth")
+    evaluate_by_turn_depth(os.path.normpath('results/T5_automatic_results.txt'), os.path.normpath('2020/2020qrels.txt'))
 
